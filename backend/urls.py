@@ -16,14 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import apply_job, hello_api,register_user,basic_login,job_list
+from .views import apply_job, hello_api, register_user, basic_login, job_list
 
 urlpatterns = [
-    path('admin/',admin.site.urls),
-    path('hello/',hello_api ),
-     path('register',register_user ),
-     path("login",basic_login),
-     path("jobs",job_list),
-     path("apply",apply_job)
-
+    path('', hello_api),
+    path('admin/', admin.site.urls),
+    path('hello/', hello_api),
+    path('register', register_user),
+    path('login', basic_login),
+    path('jobs', job_list),
+    path('apply', apply_job),
 ]
+

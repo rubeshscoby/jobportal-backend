@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -13,6 +14,7 @@ def hello_api(request):
     return Response({"message": "Hello from Django API"})
 
 
+@csrf_exempt
 @api_view(['POST'])
 def register_user(request):
     serializer = RegisterSerializer(data=request.data)
@@ -22,6 +24,7 @@ def register_user(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@csrf_exempt
 @api_view(['POST'])
 def basic_login(request):
     username = request.data.get('username')
@@ -44,6 +47,7 @@ def job_list(request):
     return Response(serializer.data)
 
 
+@csrf_exempt
 @api_view(['POST'])
 def apply_job(request):
     serializer = ApplicationSerializer(data=request.data)
